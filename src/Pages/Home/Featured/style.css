@@ -1,0 +1,6 @@
+.featured-content{
+    background-image: url(./../../../assets/home/featured.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
