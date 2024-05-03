@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
 import SectionHeading from "../../../Shared/SectionHeading";
-import PopularItemsCard from "./PopularItemsCard";
+import useMenu from "../../../../Hooks/useMenu";
+import MenuContainer from "./MenuContainer";
 
 
 const PopularMenu = () => {
 
-    const [popularItems, setPopularItems] = useState()
+//     const [popularItems, setPopularItems] = useState()
 
-useEffect(()=>{
-    fetch('menu.json')
-    .then(res => res.json())
-    .then(data => {
-        const popular = data.filter(popItems =>popItems.category === "popular");
-        setPopularItems(popular)
-    })
-},[])
+// useEffect(()=>{
+//     fetch('menu.json')
+//     .then(res => res.json())
+//     .then(data => {
+//         const popular = data.filter(popItems =>popItems.category === "popular");
+//         setPopularItems(popular)
+//     })
+// },[])
+
+const [items] = useMenu(`popular`)
+
 
     return (
         <div className="py-20">
@@ -22,16 +26,9 @@ useEffect(()=>{
             
             <SectionHeading subHeading={"Popular items"} heading={"from our menu"}></SectionHeading>
 
-            <div className="grid grid-cols-2 gap-10">
-                
-                {
-                    popularItems?.map(item =><PopularItemsCard
-                         key={item._id}
-                         item = {item}
-                         ></PopularItemsCard>)
-                }
-
-            </div>
+            <MenuContainer
+            items={items}
+            ></MenuContainer>
             
         </div>
     );

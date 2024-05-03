@@ -6,10 +6,16 @@ import SectionHeading from '../Shared/SectionHeading';
 import PopularMenu from './Category/PopularMenu/PopularMenu';
 import Featured from './Featured/Featured';
 import Testimonials from './Review/Testimonials';
+import { Helmet } from 'react-helmet';
+import PageHeader from '../Shared/PageHeader';
+import image from './../../assets/home/slide1.jpg'
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>bistro boss | home</title>
+            </Helmet>
             <Banner></Banner>
 
 
