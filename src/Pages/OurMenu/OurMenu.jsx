@@ -16,6 +16,7 @@ const OurMenu = () => {
     const [soup] = useMenu('soup');
     const [salad] = useMenu('salad');
     const [pizza] = useMenu('pizza');
+    const [popular] = useMenu('popular');
 
 
 
@@ -39,49 +40,57 @@ const OurMenu = () => {
                     subHeading={"Don't miss"}
                     heading={"todays offer"}
                 ></SectionHeading>
-                <MenuContainer items={offered}></MenuContainer>
-            </div>
-{/* ==================== desserts =============================== */}
-            <CategoryHeader
-                chefService={chefService}
-                categoryName={'desserts'}
-                description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
-            ></CategoryHeader>
-            <div className="my-20">
-                <MenuContainer items={dessert}></MenuContainer>
-            </div>
-{/* ==================== pizza =============================== */}
-            <CategoryHeader
-                chefService={chefService}
-                categoryName={'pizza'}
-                description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
-            ></CategoryHeader>
-            <div className="my-20">
-                <MenuContainer items={pizza}></MenuContainer>
-            </div>
-{/* ==================== salad =============================== */}
-            <CategoryHeader
-                chefService={chefService}
-                categoryName={'salad'}
-                description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
-            ></CategoryHeader>
-            <div className="my-20">
-                <MenuContainer items={salad}></MenuContainer>
-            </div>
-{/* ==================== soup =============================== */}
-            <CategoryHeader
-                chefService={chefService}
-                categoryName={'soup'}
-                description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
-            ></CategoryHeader>
-            <div className="my-20">
-                <MenuContainer items={soup}></MenuContainer>
-            </div>
+                <MenuContainer items={offered} category={'offered'}></MenuContainer>
+                {/* ================= popular ======================= */}
+                <div className="mb-20">
+                    <SectionHeading
+                        subHeading={"Popular items"}
+                        heading={"From our menu"}
+                    ></SectionHeading>
+                    <MenuContainer items={popular} category={'popular'}></MenuContainer>
+                </div>
+                {/* ==================== desserts =============================== */}
+                <CategoryHeader
+                    chefService={chefService}
+                    categoryName={'desserts'}
+                    description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
+                ></CategoryHeader>
+                <div className="my-20">
+                    <MenuContainer items={dessert} category={'dessert'}></MenuContainer>
+                </div>
+                {/* ==================== pizza =============================== */}
+                <CategoryHeader
+                    chefService={chefService}
+                    categoryName={'pizza'}
+                    description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
+                ></CategoryHeader>
+                <div className="my-20">
+                    <MenuContainer items={pizza} category={'pizza'}></MenuContainer>
+                </div>
+                {/* ==================== salad =============================== */}
+                <CategoryHeader
+                    chefService={chefService}
+                    categoryName={'salad'}
+                    description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
+                ></CategoryHeader>
+                <div className="my-20">
+                    <MenuContainer items={salad} category={'salad'}></MenuContainer>
+                </div>
+                {/* ==================== soup =============================== */}
+                <CategoryHeader
+                    chefService={chefService}
+                    categoryName={'soup'}
+                    description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum odio voluptate reiciendis iste quae quis dolores neque. Cum officia ut quaerat nemo error impedit excepturi obcaecati!'}
+                ></CategoryHeader>
+                <div className="my-20">
+                    <MenuContainer items={soup} category={'soup'}></MenuContainer>
+                </div>
 
 
 
 
 
+            </div>
         </div>
     );
 };

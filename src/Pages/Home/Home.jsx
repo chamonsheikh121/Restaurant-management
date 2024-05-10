@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Footer from '../Shared/Footer';
 import Banner from './Banner/Banner';
 import Category from './Category/Category';
@@ -7,14 +7,21 @@ import PopularMenu from './Category/PopularMenu/PopularMenu';
 import Featured from './Featured/Featured';
 import Testimonials from './Review/Testimonials';
 import { Helmet } from 'react-helmet';
-import PageHeader from '../Shared/PageHeader';
-import image from './../../assets/home/slide1.jpg'
+// import PageHeader from '../Shared/PageHeader';
+// import image from './../../assets/home/slide1.jpg'
+import { AuthContext } from '../../Provider/AuthProvider';
+
 
 const Home = () => {
+    const {user} = useContext(AuthContext);
+    console.log(user);
+    
     return (
+
+        // ,XLLLLLLL   ,,,,,,,
         <div>
             <Helmet>
-                <title>bistro boss | home</title>
+                <title>bistro boss | HOME</title>
             </Helmet>
             <Banner></Banner>
 

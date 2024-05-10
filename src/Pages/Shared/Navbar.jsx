@@ -2,11 +2,45 @@ import { Outlet } from "react-router-dom";
 import logo from './../../assets/logo.png'
 import icon from './../../assets/icon/icon.png'
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import UseAuthContext from "../../Hooks/UseAuthContext";
+import { ThreeCircles } from "react-loader-spinner";
+import UseCart from "../../Hooks/UseCart";
+import Swal from "sweetalert2";
+
 
 
 const Navbar = () => {
 
+    const { user, logOut, loading } = UseAuthContext()
+
+    const [cart] = UseCart()
+    // console.log(user);
+    const userName = user?.displayName?.split('')
+    let userFirstLetter
+    if (userName) {
+        userFirstLetter = userName[0]
+    }
+
+    const handleLogOut = () => {
+        logOut()
+
+        Swal.fire({
+            title: `--- LogOut ---`,
+            html: "logged out successful",
+            timer: 1000,
+            timerProgressBar: true,
+            showConfirmButton:false
+        })
+
+    }
+
+
+
     const navContent = <>
+        {
+            user?.photoURL ? <img className="w-10 h-10 mr-5 rounded-full" src={user?.photoURL}></img> : <div className=" w-14 h-14 border-2 flex bg-red-600 mr-5 rounded-full font-bold justify-center items-center text-4xl"><span>{userFirstLetter}</span></div>
+        }
         <li className="cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
             to='/'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
@@ -17,21 +51,45 @@ const Navbar = () => {
                 className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
             >CONTACT</NavLink></li>
         <li className="cursor-pointer  hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
-            to='/dashboard'
+            to='/user-dashboard'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
         >DASHBOARD</NavLink></li>
         <li className="cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
             to='/ourmenu'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
         >our menu</NavLink></li>
-        <li className="relative cursor-pointer hover:bg-purple-900  md:pr-6 px-0  rounded-md transition-all hover:text-white "><NavLink
-            to='/ourshop'
+        <li className=" cursor-pointer hover:bg-purple-900   rounded-md transition-all hover:text-white "><NavLink
+            to='/ourshop/dessert'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
-        >our shop <img className="w-[40px] absolute right-0" src={icon} alt="" /></NavLink></li>
+        >Our shop</NavLink></li>
+        <li className="relative cursor-pointer hover:bg-purple-900  md:pr-6 px-0  rounded-md transition-all hover:text-white "><NavLink
+            to='/profile'
+            className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
+        >Profile</NavLink></li>
 
-        <li className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">Login</li>
+        <li className="relative cursor-pointer "><NavLink
+            to='/user-dashboard/my-cart'
+            className={({ isActive }) => isActive ? 'border' : ''}>
+            <img className="w-[40px]  right-0" src={icon} alt="" /></NavLink>
+            <span className="absolute  bottom-2 p-1 right-4 bg-red-600  text-white">{cart?.length}</span></li>
+
+
+        {
+            loading ? <span className=" flex justify-center items-center"><ThreeCircles
+                visible={true}
+                height="50"
+                width="50"
+                color="#4fa94d"
+                ariaLabel="three-circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+            /></span> :
+                user ? <li onClick={handleLogOut} className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">LogOut</li> : <Link to='/login'><li className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">Login</li></Link>
+        }
 
     </>
+
+
 
     return (
         <div className="">

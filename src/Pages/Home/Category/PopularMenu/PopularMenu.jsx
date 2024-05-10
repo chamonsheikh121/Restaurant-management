@@ -27,9 +27,11 @@ const [items] = useMenu(`popular`)
             <SectionHeading subHeading={"Popular items"} heading={"from our menu"}></SectionHeading>
 
             <MenuContainer
+            category={'popular'}
             items={items}
             ></MenuContainer>
-            
+
+ 
         </div>
     );
 };

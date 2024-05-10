@@ -13,7 +13,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState()
     // Testimonials.jsx:26 _id,name,details,rating
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/api/v1/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
