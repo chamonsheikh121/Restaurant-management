@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import UseAxios from "./UseAxios";
+import UseAxiosPublic from "./UseAxiosPublic";
 
 
 const useMenu = (category) => {
     const [items, setItems] = useState([])
-    const axiosHook = UseAxios()
+    const axiosPublic = UseAxiosPublic()
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosHook.get('/api/v1/menu')
+        axiosPublic.get('/api/v1/menu')
             .then(res => {
 
                 if (category) {
