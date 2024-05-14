@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import UseAxios from "./UseAxios";
 import UseAxiosPublic from "./UseAxiosPublic";
 
 
@@ -18,7 +17,7 @@ const useMenu = (category) => {
                     setLoading(false)
                     return
                 }
-                setItems(data)
+                setItems(res.data)
 
             })
     }, [])

@@ -18,14 +18,14 @@ const UserDashboard = () => {
 
     const [cart] = UseCart()
     const [isAdmin] = UseIsAdmin();
-// const isAdmin = undefined
+    // const isAdmin = undefined
 
 
     const dashboardNavbar = <div className="uppercase  w-full px-4">
         {
             isAdmin ? <ul className="flex flex-col gap-3">
                 <NavLink
-                    to={'/user-dashboard/admin-home'}
+                    to={'/user-dashboard'}
                     className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
                 >
                     <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"><IoHome></IoHome> admin HOME</li>
@@ -97,10 +97,10 @@ const UserDashboard = () => {
                 </ul>
         }
         <hr className=" my-5" />
-        <ul className="space-y-2">
-            <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"><IoHome></IoHome> USER HOME</li></NavLink>
-            <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <RiReservedFill></RiReservedFill> RESERVATION</li></NavLink>
-            <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
+        <ul className="space-y-2 flex flex-col">
+            <NavLink to={'/'}><li className="cursor-pointer hover:border hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"><IoHome></IoHome> USER HOME</li></NavLink>
+            <NavLink ><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <RiReservedFill></RiReservedFill> RESERVATION</li></NavLink>
+            <NavLink to={'/user-dashboard/payment-history'}><li className="cursor-pointer hover:border  hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43] "> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
             <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
 
         </ul>

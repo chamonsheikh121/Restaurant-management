@@ -97,7 +97,7 @@ const OurShop = () => {
 
 
 
-            <Tabs selectedIndex={initialIndex} onSelect={(index) => setInitialIndex(index)} className={'text-center my-10 uppercase'}>
+            <Tabs selectedIndex={initialIndex} onSelect={(index) => setInitialIndex(index)} className={'text-center my-10 uppercase px-20'}>
 
                 <TabList>
                     <Tab >dessert</Tab>

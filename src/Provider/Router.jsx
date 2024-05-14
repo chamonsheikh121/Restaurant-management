@@ -18,6 +18,9 @@ import ManageItems from "../Pages/ManageItems/ManageItems";
 import ManageBookings from "../Pages/ManageBookings/ManageBookings";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import AdminRouter from "./AdminRouter";
+import UpdateItem from "../Pages/UpdateItem/UpdateItem";
+import Checkout from "../Pages/Checkout.jsx/Checkout";
+import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -68,16 +71,34 @@ const router = createBrowserRouter([
                 element: <Cart></Cart>
             },
             {
+                path:'my-cart/checkout',
+                element:<Checkout></Checkout>
+            },
+            {
+                path:'payment-history',
+                element:<PaymentHistory></PaymentHistory>
+            },
+
+            // admin secure routers
+
+            {
                 path: 'admin-home',
                 element: <AdminHome></AdminHome>
             },
             {
                 path: 'add-items',
-                element: <AddItems></AddItems>
+                element: <AdminRouter><AddItems></AddItems></AdminRouter>
             },
             {
                 path: 'manage-items',
                 element: <ManageItems></ManageItems>
+            },
+
+            {
+                path: 'manage-items/:id',
+                element: <AdminRouter><UpdateItem></UpdateItem></AdminRouter>,
+                loader:({params})=>fetch(`http://localhost:5000/api/v1/menuItem/${params.id}`)
+               
             },
             {
                 path: 'manage-bookings',

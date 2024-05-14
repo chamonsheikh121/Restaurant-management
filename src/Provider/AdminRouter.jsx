@@ -7,7 +7,7 @@ const AdminRouter = ({ children }) => {
     const { user, loading } = UseAuthContext();
     const [isAdmin, isAdminLoading] = UseIsAdmin();
 
-    console.log('hello from mew mew' ,isAdmin, isAdminLoading);
+    // console.log('hello from mew mew' ,isAdmin, isAdminLoading);
 
     if (loading || isAdminLoading) {
         return <span className="w-full h-screen  flex justify-center items-center"><ThreeCircles
@@ -25,7 +25,7 @@ const AdminRouter = ({ children }) => {
         return children
     }
 
-    return <Navigate to={'/login'}></Navigate>
+    return <Navigate to={'/'}></Navigate>
 
 };
 

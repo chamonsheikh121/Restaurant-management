@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import UseAxios from "../../Hooks/UseAxios";
 import { useLocation, useNavigate } from "react-router-dom";
 import UseCart from "../../Hooks/UseCart";
+import './FoodCard.css'
 
 
 const FoodCard = ({ salads }) => {
@@ -27,6 +28,7 @@ const FoodCard = ({ salads }) => {
             const { displayName, email, photoURL } = user
 
             const cartInfo = {
+                menuId: _id,
                 CustomerName: displayName,
                 CustomerEmail: email,
                 CustomerPhoto: photoURL || null,
@@ -80,13 +82,13 @@ const FoodCard = ({ salads }) => {
 
 
     return (
-        <div className=" text-gray-600 flex flex-col flex-grow-0">
-            <figure className="relative h-[270px]"><img className="w-full h-full" src={image ? image : defaultImage} />
+        <div className="food-card transition-transform  text-gray-600 flex flex-col flex-grow-0 ">
+            <figure className="relative h-[270px]"><img className="w-full h-full object-cover object-center" src={image ? image : defaultImage} />
                 <p className="bg-black absolute top-5 right-5 px-4 py-1  inline text-white font-bold text-xl">${price}</p>
             </figure>
 
-            <div className="space-y-3">
-                <h2 className="mt-3 text-start font-bold text-2xl">{name}</h2>
+            <div className="card-content space-y-3">
+                <h2 className="mt-3 break-words text-start font-bold text-2xl">{name}</h2>
                 <p className="text-start text-sm">{recipe}</p>
                 <div onClick={() => setAddToCart(true)}>
                     <button onClick={() => handleAddToCart(salads)} className={`btn w-full hover:border-purple-700 hover:text-purple-700  hover:bg-white   ${addToCart ? 'text-purple-700 bg-white border-purple-700 border-2':'bg-purple-700 text-white'}`}>{addToCart ? 'Added to the cart' : 'Add to cart'}</button>
