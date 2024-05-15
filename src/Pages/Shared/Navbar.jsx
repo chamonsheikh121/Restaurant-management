@@ -7,13 +7,16 @@ import UseAuthContext from "../../Hooks/UseAuthContext";
 import { ThreeCircles } from "react-loader-spinner";
 import UseCart from "../../Hooks/UseCart";
 import Swal from "sweetalert2";
+import UseIsAdmin from "../../Hooks/UseIsAdmin";
 
 
 
 const Navbar = () => {
 
-    const { user, logOut, loading } = UseAuthContext()
-
+    const { user, logOut, loading } = UseAuthContext();
+    console.log(loading);
+    const [isAdmin] = UseIsAdmin();
+    console.log(isAdmin);
     const [cart] = UseCart()
     // console.log(user);
     const userName = user?.displayName?.split('')
@@ -30,7 +33,7 @@ const Navbar = () => {
             html: "logged out successful",
             timer: 1000,
             timerProgressBar: true,
-            showConfirmButton:false
+            showConfirmButton: false
         })
 
     }
@@ -50,10 +53,21 @@ const Navbar = () => {
                 to='/contact'
                 className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
             >CONTACT</NavLink></li>
-        <li className="cursor-pointer  hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
-            to='/user-dashboard'
-            className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
-        >DASHBOARD</NavLink></li>
+
+
+
+        {
+            user?.email ? isAdmin ? <li className="cursor-pointer  hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
+                to='/user-dashboard/admin-home'
+                className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
+            >DASHBOARD</NavLink></li> : <li className="cursor-pointer  hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
+                to='/user-dashboard/user-home'
+                className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
+            >DASHBOARD</NavLink></li> : ''
+        }
+
+
+
         <li className="cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
             to='/ourmenu'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
@@ -62,29 +76,19 @@ const Navbar = () => {
             to='/ourshop/dessert'
             className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
         >Our shop</NavLink></li>
-        <li className="relative cursor-pointer hover:bg-purple-900  md:pr-6 px-0  rounded-md transition-all hover:text-white "><NavLink
-            to='/profile'
-            className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
-        >Profile</NavLink></li>
-
-        <li className="relative cursor-pointer "><NavLink
-            to='/user-dashboard/my-cart'
-            className={({ isActive }) => isActive ? 'border' : ''}>
-            <img className="w-[40px]  right-0" src={icon} alt="" /></NavLink>
-            <span className="absolute  bottom-2 p-1 right-4 bg-red-600  text-white">{cart?.length}</span></li>
 
 
         {
-            loading ? <span className=" flex justify-center items-center"><ThreeCircles
-                visible={true}
-                height="50"
-                width="50"
-                color="#4fa94d"
-                ariaLabel="three-circles-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-            /></span> :
-                user ? <li onClick={handleLogOut} className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">LogOut</li> : <Link to='/login'><li className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">Login</li></Link>
+            user?.email && <li className="relative cursor-pointer "><NavLink
+                to='/user-dashboard/my-cart'
+                className={({ isActive }) => isActive ? 'border' : ''}>
+                <img className="w-[40px]  right-0" src={icon} alt="" /></NavLink>
+                <span className="absolute  bottom-2 p-1 right-4 bg-red-600  text-white">{cart?.length}</span></li>
+        }
+
+
+        {
+            user ? <li onClick={handleLogOut} className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">LogOut</li> : <Link to='/login'><li className="relative cursor-pointer hover:bg-purple-900    rounded-md transition-all hover:text-white py-2 px-4 ">Login</li></Link>
         }
 
     </>

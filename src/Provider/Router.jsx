@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <PrivateRouter><UserDashboard></UserDashboard></PrivateRouter>,
         children: [
             {
-                index: true,
+                path: 'user-home',
                 element: <UserHome></UserHome>
             },
             {
@@ -68,22 +68,22 @@ const router = createBrowserRouter([
             },
             {
                 path: 'my-cart',
-                element: <Cart></Cart>
+                element: <PrivateRouter> <Cart></Cart></PrivateRouter>
             },
             {
-                path:'my-cart/checkout',
-                element:<Checkout></Checkout>
+                path: 'my-cart/checkout',
+                element: <Checkout></Checkout>
             },
             {
-                path:'payment-history',
-                element:<PaymentHistory></PaymentHistory>
+                path: 'payment-history',
+                element: <PaymentHistory></PaymentHistory>
             },
 
             // admin secure routers
 
             {
                 path: 'admin-home',
-                element: <AdminHome></AdminHome>
+                element: <AdminRouter><AdminHome></AdminHome></AdminRouter>
             },
             {
                 path: 'add-items',
@@ -91,18 +91,18 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manage-items',
-                element: <ManageItems></ManageItems>
+                element: <AdminRouter><ManageItems></ManageItems></AdminRouter>
             },
 
             {
                 path: 'manage-items/:id',
                 element: <AdminRouter><UpdateItem></UpdateItem></AdminRouter>,
-                loader:({params})=>fetch(`http://localhost:5000/api/v1/menuItem/${params.id}`)
-               
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/menuItem/${params.id}`)
+
             },
             {
                 path: 'manage-bookings',
-                element: <ManageBookings></ManageBookings>
+                element: <AdminRouter><ManageBookings></ManageBookings></AdminRouter>
             },
             {
                 path: 'all-users',

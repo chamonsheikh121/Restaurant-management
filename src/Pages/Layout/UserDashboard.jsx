@@ -10,6 +10,7 @@ import { IoBookmarksSharp } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import UseCart from "../../Hooks/UseCart";
+import logo from './../../assets/Bistro-boss-logo.png'
 // import UseAdmin from "../../Hooks/UseAdmin";
 import UseIsAdmin from "../../Hooks/UseIsAdmin";
 
@@ -25,7 +26,7 @@ const UserDashboard = () => {
         {
             isAdmin ? <ul className="flex flex-col gap-3">
                 <NavLink
-                    to={'/user-dashboard'}
+                    to={'/user-dashboard/admin-home'}
                     className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
                 >
                     <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"><IoHome></IoHome> admin HOME</li>
@@ -59,7 +60,7 @@ const UserDashboard = () => {
                 :
                 <ul className="flex flex-col gap-3">
                     <NavLink
-                        to={'/user-dashboard'}
+                        to={'/user-dashboard/user-home'}
                         className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}
                     >
                         <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"><IoHome></IoHome> USER HOME</li>
@@ -98,7 +99,7 @@ const UserDashboard = () => {
         }
         <hr className=" my-5" />
         <ul className="space-y-2 flex flex-col">
-            <NavLink to={'/'}><li className="cursor-pointer hover:border hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"><IoHome></IoHome> USER HOME</li></NavLink>
+            <NavLink to={'/'}><li className="cursor-pointer hover:border hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"><IoHome></IoHome> HOME</li></NavLink>
             <NavLink ><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <RiReservedFill></RiReservedFill> RESERVATION</li></NavLink>
             <NavLink to={'/user-dashboard/payment-history'}><li className="cursor-pointer hover:border  hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43] "> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
             <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
@@ -110,7 +111,8 @@ const UserDashboard = () => {
     return (
         <div className="flex h-screen">
 
-            <div className="w-3/12  bg-[#D1A054] h-full text-black flex justify-center items-center">
+            <div className="w-3/12  bg-[#D1A054] h-full text-black flex flex-col gap-10 justify-center items-center">
+                <img className="h-32 w-2/4" src={logo} alt="" />
 
                 {dashboardNavbar}
 

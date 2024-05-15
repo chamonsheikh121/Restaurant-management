@@ -50,24 +50,19 @@ const Cart = () => {
                             </tr>
                         </thead>
                         {
-                            !cart[0] && <span className="w-full h-full  flex justify-center items-center"><ThreeCircles
-                                visible={true}
-                                height="100"
-                                width="100"
-                                color="#4fa94d"
-                                ariaLabel="three-circles-loading"
-                                wrapperStyle={{}}
-                                wrapperClass=""
-                            /></span>
+                            cart.length < 1 && <tbody className="ml-10 md:text-xl font-bold ">No item found</tbody>
                         }
-                        <tbody>
+                        {
+                            cart[0] &&
+                            <tbody>
 
-                            {
-                                cart?.map((c, i) => <CartCard key={c._id} item={c} index={i}></CartCard>)
-                            }
+                                {
+                                    cart?.map((c, i) => <CartCard key={c._id} item={c} index={i}></CartCard>)
+                                }
 
 
-                        </tbody>
+                            </tbody>
+                        }
 
 
                     </table>

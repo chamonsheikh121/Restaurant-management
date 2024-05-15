@@ -62,7 +62,6 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const subscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            setLoading(false)
             if (currentUser) {
                 const email = { email: currentUser.email };
                 // console.log(email);
@@ -71,6 +70,7 @@ const AuthProvider = ({ children }) => {
                         // console.log(res.data);
                         if (res.data) {
                             localStorage.setItem('access-token', res?.data)
+                            setLoading(false)
                         }
                     })
             }

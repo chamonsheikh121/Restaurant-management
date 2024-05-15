@@ -7,11 +7,12 @@ import UseAuthContext from "./UseAuthContext";
 const UseCart = () => {
 
     const axiosHook = UseAxios()
-    const { user } = UseAuthContext()
+    const { user ,loading} = UseAuthContext()
     // console.log(user);
     
     const { data : cart=[], refetch} = useQuery({
         queryKey: ['carts', user?.email],
+        enabled: !loading,
         queryFn: async () => {
             const res = await axiosHook.get(`/api/v1/cartItems?email=${user?.email}`)
             const data = res.data
