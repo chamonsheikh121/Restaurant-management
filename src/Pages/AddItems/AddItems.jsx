@@ -17,10 +17,10 @@ const AddItems = () => {
         setLoading(true)
         // console.log(data);
         const fileImage = { image: data.recipeImage[0] };
-
+// console.log(data);
 
         if (data.recipeImage[0]) {
-            const apiKey = 'c5c071cffbbca56cf2ff025b92b88d9b';
+            const apiKey = '4e7a8191c50482d70f9d8adfd3876e00';
             const api = `https://api.imgbb.com/1/upload?key=${apiKey}`
             const res = await axiosPublic.post(api, fileImage, {
                 headers: {
@@ -30,7 +30,7 @@ const AddItems = () => {
             // console.log(res.data.success);
             if (res.data.success) {
                 // all thing will be do here // display_url
-                console.log('object');
+                // console.log('object');
                 const menuItem = {
                     name: data?.recipeName,
                     recipe: data?.recipe,
@@ -53,7 +53,7 @@ const AddItems = () => {
             }
         }
         else {
-            console.log();
+            // console.log();
             const menuItem = {
                 name: data?.recipeName,
                 recipe: data?.recipe,
@@ -73,7 +73,7 @@ const AddItems = () => {
                 reset()
             }
         }
-        // console.log(res.data);
+        console.log(res.data);
     }
 
 

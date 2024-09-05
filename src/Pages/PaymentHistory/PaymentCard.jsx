@@ -2,7 +2,7 @@
 
 const PaymentCard = ({index, payment}) => {
     const {_id,name,email,totalPrice,cartIds,date,transactionId,status} = payment;
-    console.log(date.split(' '));
+    // console.log(date.split(' '));
 
     return (
         <tr>

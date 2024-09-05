@@ -21,7 +21,7 @@ const UpdateItem = () => {
         if (data?.recipeImage?.length > 0) {
             setLoading(true)
             console.log(fileImage);
-            const apiKey = 'c5c071cffbbca56cf2ff025b92b88d9b';
+            const apiKey = '4e7a8191c50482d70f9d8adfd3876e00';
             const api = `https://api.imgbb.com/1/upload?key=${apiKey}`
             const res = await axiosPublic.post(api, fileImage, {
                 headers: {

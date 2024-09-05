@@ -1,0 +1,4 @@
+.blurNav{
+    background-color: rgb(100, 100, 100, .5);
+    backdrop-filter: blur(3px);
+}

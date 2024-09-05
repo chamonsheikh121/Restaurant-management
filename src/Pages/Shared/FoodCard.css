@@ -1,7 +1,7 @@
 .food-card {
-    background-color: rgba(255, 230, 0, 0.151);
-
-
+    background-color: rgb(98, 96, 96);
+    color:white;
+    transition: .3s linear;
 }
 
 .card-content {
@@ -11,6 +11,6 @@
 .food-card:hover {
 background-color: white;
 color: black;
-    box-shadow: -10px 10px 10px rgb(62, 62, 62);
-    transform: translate(5px, -5px);
+    box-shadow: 0px 0px 30px black;
+    transform: translate(2px, -2px);
 }

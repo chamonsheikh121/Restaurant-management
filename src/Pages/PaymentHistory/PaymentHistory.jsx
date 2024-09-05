@@ -18,7 +18,7 @@ const PaymentHistory = () => {
             < div className="mx-auto max-w-3xl  bg-white p-10">
 
                 <div className="uppercase flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-700">total orders: {payments?.length}</h2>
+                    <h2 className="text-2xl font-bold text-gray-700">total Payments: {payments?.length}</h2>
                 </div>
                 <div className="overflow-x-auto my-10 rounded-md">
                     <table className="table">

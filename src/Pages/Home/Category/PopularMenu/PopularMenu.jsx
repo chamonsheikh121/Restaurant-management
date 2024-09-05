@@ -21,7 +21,7 @@ const [items] = useMenu(`popular`)
 
 
     return (
-        <div className="py-20">
+        <div className="py-20 ">
 
             
             <SectionHeading subHeading={"Popular items"} heading={"from our menu"}></SectionHeading>

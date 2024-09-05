@@ -49,7 +49,8 @@ const AuthProvider = ({ children }) => {
 
 
     const logOut = () => {
-        signOut(auth)
+        localStorage.removeItem('access-token')
+        return signOut(auth)
     }
 
     let userEmail;
@@ -67,17 +68,17 @@ const AuthProvider = ({ children }) => {
                 // console.log(email);
                 axiosPublic.post('/api/v1/jwt', email)
                     .then(res => {
-                        // console.log(res.data);
+                        console.log(res.data);
                         if (res.data) {
                             localStorage.setItem('access-token', res?.data)
                             setLoading(false)
                         }
                     })
             }
-            else {
-                localStorage.removeItem('access-token')
-
+            else{
+                setLoading(false)
             }
+
         })
 
         return () => {

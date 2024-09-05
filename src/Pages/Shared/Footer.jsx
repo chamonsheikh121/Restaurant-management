@@ -14,7 +14,7 @@ const Footer = () => {
         <>
             <footer className="bg-gray-700 flex flex-col md:flex-row  text-white">
                 <aside className="w-full flex justify-end">
-                    <div className="mr-32 py-16 space-y-3">
+                    <div className="md:mr-32 mx-auto py-16 space-y-3">
                         <h3 className="text-4xl font-bold">Contact Us</h3>
                         <p className="text-xl">Dhaka, Bangladesh</p>
                         <p >+88012318237</p>
@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                 </aside>
                 <nav className="bg-gray-900 w-full py-16 flex justify-start">
-                    <div className="ml-32 space-y-3">
+                    <div className="md:ml-32 mx-auto space-y-3">
                         <h6 className="text-4xl font-bold text-white">Follow Us</h6>
                         <p>Join us on social media</p>
                         <div className="grid grid-cols-3 cursor-pointer">
@@ -37,7 +37,7 @@ const Footer = () => {
             </footer>
             <div className="footer footer-center p-4 bg-black text-white">
                 <aside>
-                    <p>Copyright © {year} - All right reserved by ACME Industries Ltd</p>
+                    <p className="text-xs text-gray-400">Copyright © {year} Bistro boss <span className="text-white">[ Chamon Ali ]</span> - All right reserved by ACME Industries Ltd</p>
                 </aside>
             </div>
         </>

@@ -109,15 +109,15 @@ const UserDashboard = () => {
     </div>
 
     return (
-        <div className="flex h-screen">
+        <div className="grid grid-cols-1 md:grid-cols-12">
 
-            <div className="w-3/12  bg-[#D1A054] h-full text-black flex flex-col gap-10 justify-center items-center">
+            <div className="col-span-3 md:sticky top-0 bg-[#D1A054] h-screen text-black flex flex-col gap-10 justify-center items-center">
                 <img className="h-32 w-2/4" src={logo} alt="" />
 
                 {dashboardNavbar}
 
             </div>
-            <div className="bg-[#F6F6F6] flex-1 p-5">
+            <div className="col-span-9 bg-[#F6F6F6] p-5">
                 <div><Outlet></Outlet></div>
             </div>
 

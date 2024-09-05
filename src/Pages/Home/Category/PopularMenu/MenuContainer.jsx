@@ -12,7 +12,7 @@ const MenuContainer = ({ items, category }) => {
     return (
         <>
             {
-                items[0] ? <div className="grid grid-cols-2 gap-10">
+                items[0] ? <div className="grid grid-cols-1 md:grid-cols-2  gap-10">
 
                     {
                         slicedItems?.map(item => <PopularItemsCard

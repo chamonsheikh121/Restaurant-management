@@ -97,7 +97,7 @@ const OurShop = () => {
 
 
 
-            <Tabs selectedIndex={initialIndex} onSelect={(index) => setInitialIndex(index)} className={'text-center my-10 uppercase px-20'}>
+            <Tabs selectedIndex={initialIndex} onSelect={(index) => setInitialIndex(index)} className={'text-center my-10 uppercase px-5 lg:px-20'}>
 
                 <TabList>
                     <Tab >dessert</Tab>
@@ -120,7 +120,7 @@ const OurShop = () => {
                             wrapperStyle={{}}
                             wrapperClass=""
                         /></span> :
-                            <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                            <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                                 {
                                     desserts?.map(dessert => <FoodCard key={dessert._id} salads={dessert}></FoodCard>)
                                 }
@@ -139,7 +139,7 @@ const OurShop = () => {
                             wrapperStyle={{}}
                             wrapperClass=""
                         /></span> :
-                            <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                            <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                                 {
                                     soups?.map(soup => <FoodCard key={soup._id} salads={soup}></FoodCard>)
                                 }
@@ -158,7 +158,7 @@ const OurShop = () => {
                             ariaLabel="three-circles-loading"
                             wrapperStyle={{}}
                             wrapperClass=""
-                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                             {
                                 salads?.map(salad => <FoodCard key={salad._id} salads={salad}></FoodCard>)
                             }
@@ -176,7 +176,7 @@ const OurShop = () => {
                             ariaLabel="three-circles-loading"
                             wrapperStyle={{}}
                             wrapperClass=""
-                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                             {
                                 pizzas?.map(pizza => <FoodCard key={pizza._id} salads={pizza}></FoodCard>)
                             }
@@ -194,7 +194,7 @@ const OurShop = () => {
                             ariaLabel="three-circles-loading"
                             wrapperStyle={{}}
                             wrapperClass=""
-                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                             {
                                 drinks?.map(drink => <FoodCard key={drink._id} salads={drink}></FoodCard>)
                             }
@@ -212,7 +212,7 @@ const OurShop = () => {
                             ariaLabel="three-circles-loading"
                             wrapperStyle={{}}
                             wrapperClass=""
-                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+                        /></span> : <div className={'grid grid-cols-1 md:grid-cols-3 gap-10'}>
                             {
                                 populars?.map(popular => <FoodCard key={popular._id} salads={popular}></FoodCard>)
                             }

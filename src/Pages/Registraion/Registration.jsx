@@ -55,7 +55,7 @@ const Registration = () => {
 
     const handleRegistrationForm = (event) => {
         event.preventDefault()
-        console.log(userName, email, password, photoLink);
+        // console.log(userName, email, password, photoLink);
 
         signUp(email, password)
             .then(result => {

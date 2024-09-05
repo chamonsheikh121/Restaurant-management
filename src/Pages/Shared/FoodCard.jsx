@@ -11,10 +11,10 @@ import './FoodCard.css'
 
 const FoodCard = ({ salads }) => {
     const [addToCart, setAddToCart] = useState(false)
-    const {user} = UseAuthContext()
+    const { user } = UseAuthContext()
     const axiosHook = UseAxios()
     const location = useLocation()
-    const [,refetch] = UseCart()
+    const [, refetch] = UseCart()
     const navigate = useNavigate()
     // console.log(refetch);
     const { _id, name, recipe, image, price } = salads;
@@ -49,12 +49,12 @@ const FoodCard = ({ salads }) => {
                             title: `${name}`,
                             html: "added to the cart",
                             timer: 1000,
-                            icon:'success',
+                            icon: 'success',
                             timerProgressBar: true
                         })
 
-                    
-                       
+
+
 
                     }
 
@@ -82,17 +82,20 @@ const FoodCard = ({ salads }) => {
 
 
     return (
-        <div className="food-card transition-transform  text-gray-600 flex flex-col flex-grow-0 ">
-            <figure className="relative h-[270px]"><img className="w-full h-full object-cover object-center" src={image ? image : defaultImage} />
-                <p className="bg-black absolute top-5 right-5 px-4 py-1  inline text-white font-bold text-xl">${price}</p>
-            </figure>
+        <div className="food-card p-1 text-gray-600  flex flex-col  justify-between">
+            <div className="flex flex-col">
+                <figure className="relative h-[200px] "><img className="w-full  h-full object-cover" src={image ? image : defaultImage} />
+                    <p className="bg-black absolute top-2 right-2 px-4 py-1  inline text-white font-bold text-sm">${price}</p>
+                </figure>
 
-            <div className="card-content space-y-3">
-                <h2 className="mt-3 break-words text-start font-bold text-2xl">{name}</h2>
-                <p className="text-start text-sm">{recipe}</p>
-                <div onClick={() => setAddToCart(true)}>
-                    <button onClick={() => handleAddToCart(salads)} className={`btn w-full hover:border-purple-700 hover:text-purple-700  hover:bg-white   ${addToCart ? 'text-purple-700 bg-white border-purple-700 border-2':'bg-purple-700 text-white'}`}>{addToCart ? 'Added to the cart' : 'Add to cart'}</button>
+                <div className="card-content flex-1 space-y-1">
+                    <h2 className=" break-words text-start font-bold text-xl">{name}</h2>
+                    <p className="text-start text-xs">{recipe}</p>
+
                 </div>
+            </div>
+            <div onClick={() => setAddToCart(true)} className="w-3/4 mx-auto mb-2">
+                <button onClick={() => handleAddToCart(salads)} className={`btn w-full hover:border-purple-700 hover:text-purple-700  hover:bg-white   ${addToCart ? 'text-purple-700 bg-white border-purple-700 border-2' : 'bg-purple-700 text-white'}`}>{addToCart ? 'Added to the cart' : 'Add to cart'}</button>
             </div>
         </div>
     );

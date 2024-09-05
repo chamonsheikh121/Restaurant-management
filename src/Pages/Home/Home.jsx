@@ -18,20 +18,17 @@ const Home = () => {
     
     return (
 
-        // ,XLLLLLLL   ,,,,,,,
         <div>
             <Helmet>
                 <title>bistro boss | HOME</title>
             </Helmet>
             <Banner></Banner>
 
-
-
             <div className=''>
 
                 <SectionHeading subHeading={"From 11:00 am to 10:00 pm"} heading={"Order online"}></SectionHeading>
 
-                <div className='my-10'>
+                <div className='my-10 '>
                     <Category></Category>
                 </div>
             </div>

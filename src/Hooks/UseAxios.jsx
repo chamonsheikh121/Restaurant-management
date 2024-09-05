@@ -8,6 +8,8 @@ const axiosHook = axios.create({
     baseURL: 'http://localhost:5000/'
 
 })
+//https://bistro-boss-server-two.vercel.app/
+//
 
 const UseAxios = () => {
 
@@ -16,7 +18,8 @@ const UseAxios = () => {
 
     axiosHook.interceptors.request.use(config => {
         const token = localStorage.getItem('access-token');
-        config.headers.authorization = `bearer ${token}`
+        console.log(token);
+        config.headers.authentication = `bearer ${token}`
         return config;
     }, error => {
         console.log(error);
@@ -26,7 +29,7 @@ const UseAxios = () => {
     axiosHook.interceptors.response.use(response => {
         return response
     }, async (error) => {
-
+        console.log(error);
         if (error.response?.status === 401 || error.response?.status === 403) {
             await logOut()
             navigate('/login')

@@ -11,42 +11,52 @@ import slider4 from "./../../../assets/home/slide4.jpg"
 import slider5 from "./../../../assets/home/slide5.jpg"
 
 const Category = () => {
-    return (
-        <>
+  return (
+    <div className='ml-5  '>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={0}
+        slidesPerView={1}
+        spaceBetween={1}
         freeMode={true}
         pagination={{
           clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2, 
+            // spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 4, // Show 3 slides on desktop
+            // spaceBetween: 20,
+          },
         }}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide className='relative '>
-            <img src={slider1} alt="" />
-            <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Salads</p>
+          <img src={slider1} alt="" />
+          <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Salads</p>
         </SwiperSlide>
         <SwiperSlide className='relative'>
-            <img src={slider2} alt="" />
-            <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>pizzas </p>
+          <img src={slider2} alt="" />
+          <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>pizzas </p>
         </SwiperSlide>
         <SwiperSlide className='relative'>
-            <img src={slider3} alt="" />
-            <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Soups</p>
+          <img src={slider3} alt="" />
+          <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Soups</p>
         </SwiperSlide>
         <SwiperSlide className='relative'>
-            <img src={slider4} alt="" />
-            <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>desserts</p>
+          <img src={slider4} alt="" />
+          <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>desserts</p>
         </SwiperSlide>
         <SwiperSlide className='relative'>
-            <img src={slider5} alt="" />
-            <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Salad</p>
+          <img src={slider5} alt="" />
+          <p className='absolute bottom-8 text-3xl ml-20 text-white uppercase '>Salad</p>
         </SwiperSlide>
-        
+
       </Swiper>
-    </>
-    );
+    </div>
+  );
 };
 
 export default Category;

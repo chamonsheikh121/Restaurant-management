@@ -9,13 +9,13 @@ const PrivateRouter = ({ children }) => {
     const { user, loading } = UseAuthContext()
     const location = useLocation()
 
-
+console.log(user);
 
     if (loading) {
         return <span className="w-full h-screen  flex justify-center items-center"><ThreeCircles
             visible={true}
             height="100"
-            width="100"
+        width="100"
             color="#4fa94d"
             ariaLabel="three-circles-loading"
             wrapperStyle={{}}

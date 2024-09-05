@@ -3,6 +3,7 @@ import UseAuthContext from "../../Hooks/UseAuthContext";
 import UseGetUser from "../../Hooks/UseGetUser";
 import SectionHeading from "../Shared/SectionHeading";
 import UserCard from "./UserCard";
+import './AllUser.css'
 
 
 
