@@ -20,11 +20,12 @@ const Navbar = () => {
     console.log(isAdmin);
     const [cart] = UseCart()
     // console.log(user);
-    const userName = user?.displayName?.split('')
+    const userName = user?.displayName?.split(' ')
     let userFirstLetter
     if (userName) {
-        userFirstLetter = userName[0]
+        userFirstLetter = userName[1]?.split('')[0]
     }
+
 
     const handleLogOut = () => {
         logOut()
@@ -50,7 +51,7 @@ const Navbar = () => {
 
         <li className="cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white">
             <NavLink
-                to='/contact'
+                to='/contactUs'
                 className={({ isActive }) => isActive ? 'border text-white bg-purple-700 font-bold ' : ''}
             >CONTACT</NavLink></li>
 
@@ -69,11 +70,11 @@ const Navbar = () => {
 
 
         <li className="cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
-            to='/ourmenu'
+            to='/ourMenu'
             className={({ isActive }) => isActive ? 'border text-white bg-purple-700 font-bold ' : ''}
         >our menu</NavLink></li>
         <li className=" cursor-pointer hover:bg-purple-900   px-0  rounded-md transition-all hover:text-white"><NavLink
-            to='/ourshop/dessert'
+            to='/ourShop/dessert'
             className={({ isActive }) => isActive ? 'border text-white bg-purple-700 font-bold ' : ''}
         >Our shop</NavLink></li>
 
@@ -101,11 +102,11 @@ const Navbar = () => {
 
     return (
         <div className="">
-            <div className="drawer">
+            <div className="drawer ">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     {/* Navbar */}
-                    <div className="w-full  absolute z-10  text-white blurNav  navbar ">
+                    <div className="w-full   absolute z-10  text-white blurNav  navbar ">
                         <div className="flex-none absolute lg:hidden ">
                             <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -114,7 +115,7 @@ const Navbar = () => {
                         <div className="flex-1 px-2 mx-2"><img className=" w-16" src={logo} alt="" />
                         </div>
                         {
-                            user?.photoURL ? <img className="w-10 h-10 mr-5 rounded-full" src={user?.photoURL}></img> : <div className=" w-14 h-14 border-2 flex bg-red-600 mr-5 rounded-full font-bold justify-center items-center text-4xl"><span>{userFirstLetter}</span></div>
+                           user ? user?.photoURL ? <img className="w-10 h-10 mr-5 rounded-full" src={user?.photoURL}></img> : <div className=" w-14 h-14 border-2 flex bg-green-700 mr-5 rounded-full font-bold justify-center items-center text-4xl "><span className="uppercase">{userFirstLetter}</span></div>:null
                         }
                         <div className="flex-none hidden lg:block">
                             <ul className="menu flex justify-center items-center uppercase  menu-horizontal">

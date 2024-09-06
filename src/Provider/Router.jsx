@@ -21,6 +21,8 @@ import AdminRouter from "./AdminRouter";
 import UpdateItem from "../Pages/UpdateItem/UpdateItem";
 import Checkout from "../Pages/Checkout.jsx/Checkout";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
+import AddReview from "../Pages/AddReview/AddReview";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 const router = createBrowserRouter([
@@ -33,11 +35,15 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: 'ourmenu',
+                path: 'ourMenu',
                 element: <OurMenu></OurMenu>
             },
             {
-                path: 'ourshop/:category',
+                path: 'contactUs',
+                element: <ContactUs></ContactUs>
+            },
+            {
+                path: 'ourShop/:category',
                 element: <OurShop></OurShop>
             },
             {
@@ -65,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path: 'reservation',
                 element: <Reservation></Reservation>
+            },
+            {
+                path: 'add-review',
+                element: <AddReview></AddReview>
             },
             {
                 path: 'my-cart',

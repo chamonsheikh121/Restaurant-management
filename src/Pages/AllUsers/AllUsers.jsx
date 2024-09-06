@@ -17,7 +17,7 @@ const AllUsers = () => {
 
             <SectionHeading subHeading={'How many ??'} heading={'Manage all users'}></SectionHeading>
 
-            < div className="mx-auto max-w-3xl  bg-white p-10">
+            < div className="mx-auto max-w-3xl  bg-white p-1 md:p-10">
 
                 <div className="uppercase flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-gray-700">total users: {users?.length}</h2>

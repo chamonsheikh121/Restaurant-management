@@ -94,7 +94,7 @@ const AdminHome = () => {
 
     return (
         <div className="">
-            <h1 className="uppercase text-3xl font-bold">Hi, welcome   ---{user ? user?.displayName : 'back'}---</h1>
+            <h1 className="uppercase  md:text-3xl font-bold">Hi, <br /> welcome   ---{user ? user?.displayName : 'back'}---</h1>
 
             <AdminHomeHeader></AdminHomeHeader>
 

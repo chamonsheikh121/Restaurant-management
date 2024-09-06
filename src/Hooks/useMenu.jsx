@@ -20,6 +20,7 @@ const useMenu = (category) => {
                 setItems(res.data)
 
             })
+            .catch(err => setLoading(false))
     }, [])
 
     return [items, loading]

@@ -69,10 +69,10 @@ const ManageItemCard = ({ item, index }) => {
                 <h4 className=" font-bold">{name}</h4>
             </td>
             <td className="">{price}</td>
-            <td className=""><Link to={`/user-dashboard/manage-items/${_id}`}><span className="btn bg-yellow-500"><MdEdit className="text-2xl"></MdEdit></span></Link></td>
+            <td className=""><Link to={`/user-dashboard/manage-items/${_id}`}><span className=" btn btn-sm lg:btn-md bg-yellow-500"><MdEdit  className="md:text-2xl"></MdEdit></span></Link></td>
             <td className=" text-center" ><RiDeleteBin6Line
                 onClick={() => handleUserDelete(_id)}
-                className="  text-3xl p-[1px] active:p-1 bg-red-500 text-white "></RiDeleteBin6Line></td>
+                className="  text-3xl p-[1px] active:p-1 text-red-500 bg-white rounded-md"></RiDeleteBin6Line></td>
 
         </tr>
 

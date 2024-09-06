@@ -28,11 +28,13 @@ const Cart = () => {
 
 
 
-            < div className="mx-auto max-w-3xl  bg-white p-10">
+            < div className="mx-auto max-w-3xl  bg-white p-0 md:p-10">
 
-                <div className="uppercase flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-700">total orders: {cart?.length}</h2>
-                    <h2 className="text-2xl font-bold text-gray-700">total Price : ${totalPrice}</h2>
+                <div className="uppercase flex items-start justify-between flex-col md:flex-row md:items-center">
+                    <div className="flex items-center gap-5">
+                        <h2 className="text-md md:text-2xl font-bold text-gray-700">total Price : ${totalPrice}</h2>
+                        <h2 className="text-md md:text-2xl font-bold text-gray-700">total orders: {cart?.length}</h2>
+                    </div>
                     <Link to='/user-dashboard/my-cart/checkout'><button className="btn text-xl uppercase bg-[#D1A054] border-none text-white  px-6 hover:text-black hover:bg-[#f0dcbf]" disabled={!cart[0]}>pay</button></Link>
                 </div>
 
@@ -41,7 +43,7 @@ const Cart = () => {
                     <table className="table">
                         {/* head */}
                         <thead className="bg-[#d1a054] text-white my-10">
-                            <tr className="uppercase   text-lg">
+                            <tr className="uppercase  text-xs md:text-lg">
                                 <th></th>
                                 <th>item image</th>
                                 <th>item name</th>

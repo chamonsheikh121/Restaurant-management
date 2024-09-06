@@ -1,7 +1,7 @@
 import { IoHome } from "react-icons/io5";
 import { RiReservedFill } from "react-icons/ri";
 import { MdOutlinePayment } from "react-icons/md";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { MdReviews } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa6";
 import { ImSpoonKnife } from "react-icons/im";
@@ -13,6 +13,7 @@ import UseCart from "../../Hooks/UseCart";
 import logo from './../../assets/Bistro-boss-logo.png'
 // import UseAdmin from "../../Hooks/UseAdmin";
 import UseIsAdmin from "../../Hooks/UseIsAdmin";
+import './Style.css'
 
 const UserDashboard = () => {
 
@@ -55,6 +56,30 @@ const UserDashboard = () => {
                     className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}>
                     <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"> <FaUsers></FaUsers>all users</li>
                 </NavLink>
+                <NavLink
+                        to={'/user-dashboard/my-bookings'}
+
+                        className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}>
+                        <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"> <FaBookmark></FaBookmark> my booking</li>
+                    </NavLink>
+                    <NavLink
+                        to={'/user-dashboard/my-cart'}
+
+                        className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}>
+                        <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"> <FaShoppingCart></FaShoppingCart> MY CART ({cart?.length})</li>
+                    </NavLink>
+                    <NavLink
+                        to={'/user-dashboard/payment-history'}
+
+                        className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}>
+                        <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"> <MdOutlinePayment></MdOutlinePayment> payment history</li>
+                    </NavLink>
+                    <NavLink
+                        to={'/user-dashboard/reservation'}
+
+                        className={({ isActive }) => isActive ? 'border text-white hover:text-white font-bold ' : ''}>
+                        <li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"> <RiReservedFill></RiReservedFill> RESERVATION</li>
+                    </NavLink>
 
             </ul>
                 :
@@ -99,10 +124,10 @@ const UserDashboard = () => {
         }
         <hr className=" my-5" />
         <ul className="space-y-2 flex flex-col">
-            <NavLink to={'/'}><li className="cursor-pointer hover:border hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"><IoHome></IoHome> HOME</li></NavLink>
-            <NavLink ><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <RiReservedFill></RiReservedFill> RESERVATION</li></NavLink>
-            <NavLink to={'/user-dashboard/payment-history'}><li className="cursor-pointer hover:border  hover:text-white  hover:font-bold  w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43] "> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
-            <NavLink><li className="cursor-pointer w-full py-2 px-5  flex items-center gap-2 bg-[#bf8d43]"> <MdOutlinePayment></MdOutlinePayment> payment history</li></NavLink>
+            <NavLink to={'/'}><li className="flex items-center gap-2 py-2 px-5 hover:bg-[#bf8d43]"><FaArrowLeft></FaArrowLeft> back</li></NavLink>
+            
+            
+            
 
         </ul>
 
@@ -111,8 +136,8 @@ const UserDashboard = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-12">
 
-            <div className="col-span-3 md:sticky top-0 bg-[#D1A054] h-screen text-black flex flex-col gap-10 justify-center items-center">
-                <img className="h-32 w-2/4" src={logo} alt="" />
+            <div className="col-span-3 overflow-y-scroll sidebar py-10 md:sticky top-10 bg-[#D1A054] h-screen text-black flex flex-col gap-10 justify-center items-center">
+                <img className="h-32 w-2/4 mt-32 object-cover" src={logo} alt="" />
 
                 {dashboardNavbar}
 

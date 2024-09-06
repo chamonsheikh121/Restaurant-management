@@ -1,0 +1,8 @@
+.sidebar{
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    
+}
+.sidebar:-webkit-scrollbar{
+    display: none;
+}

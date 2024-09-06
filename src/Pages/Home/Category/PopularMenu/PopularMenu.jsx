@@ -17,7 +17,7 @@ const PopularMenu = () => {
 //     })
 // },[])
 
-const [items] = useMenu(`popular`)
+const [items, loading] = useMenu(`popular`)
 
 
     return (
@@ -29,6 +29,7 @@ const [items] = useMenu(`popular`)
             <MenuContainer
             category={'popular'}
             items={items}
+            loading ={loading}
             ></MenuContainer>
 
  

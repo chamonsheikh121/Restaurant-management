@@ -5,15 +5,15 @@ const ItemsForm = ({ item, onSubmit, loading, buttonText }) => {
     const { register, handleSubmit, reset } = useForm()
 
     return (
-        <div className="max-w-3xl bg-gray-300 mx-auto p-6">
+        <div className="max-w-3xl bg-gray-300 mx-auto p-1 md:p-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div className="flex flex-col gap-2 ">
-                    <label htmlFor="recipeName">Recipe Name <span className="text-red-600">*</span></label>
+                    <label htmlFor="recipeName">Item Name <span className="text-red-600">*</span></label>
                     <input defaultValue={item?.name} id="recipeName" {...register('recipeName')} required type="text" placeholder="Type here" className="input  focus:outline-none focus:border-1 focus:border-black input-bordered w-full" />
                 </div>
                 <div className="flex justify-center gap-6  items-center">
                     <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="recipeName">Recipe Name <span className="text-red-600">*</span></label>
+                        <label htmlFor="recipeName">Item category <span className="text-red-600">*</span></label>
                         <select defaultValue={item?.category} required {...register('category')} className="select focus:outline-none focus:border-1 focus:border-black select-warning w-full ">
                             <option disabled ></option>
                             <option className="btn btn-lg" value={'dessert'}>Dessert</option>
@@ -31,10 +31,13 @@ const ItemsForm = ({ item, onSubmit, loading, buttonText }) => {
 
                 </div>
                 <div className="flex flex-col gap-2 w-full ">
-                    <label htmlFor="recipeName">Bio </label>
-                    <textarea defaultValue={item?.recipe} {...register('recipe')} className="textarea   focus:outline-none focus:border-1 focus:border-black input-bordered w-full textarea-warning" placeholder="Bio"></textarea>
+                    <label htmlFor="recipeName">Item details </label>
+                    <textarea defaultValue={item?.recipe} {...register('recipe')} className="textarea   focus:outline-none focus:border-1 focus:border-black input-bordered w-full textarea-warning" placeholder="Item's Bio"></textarea>
                 </div>
-                <input required={!item?.image}  {...register('recipeImage')} type="file" className="file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs" />
+                <div>
+                    <p className="text-sm mb-1">Item Image</p>
+                    <input required={!item?.image}  {...register('recipeImage')} type="file" className="file-input file-input-bordered file-input-warning file-input-sm w-full max-w-xs" />
+                </div>
                 {
                     item?.image && <a href={item?.image} target="_blank"><input  {...register('defaultImage')} defaultValue={item?.image} type="text" className="btn text-black btn-sm md:ml-10 disabled bg-white hover:border-black hover:bg-white"></input></a>
                 }

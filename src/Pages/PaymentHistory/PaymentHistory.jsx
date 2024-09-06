@@ -15,7 +15,7 @@ const PaymentHistory = () => {
 
             <SectionHeading subHeading={'At a Glance'} heading={'payment history'}></SectionHeading>
 
-            < div className="mx-auto max-w-3xl  bg-white p-10">
+            < div className="mx-auto max-w-3xl  bg-white md:p-10">
 
                 <div className="uppercase flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-gray-700">total Payments: {payments?.length}</h2>

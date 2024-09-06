@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuthContext from "../../Hooks/UseAuthContext";
-import { FaRegEye } from "react-icons/fa";
+import { FaArrowLeft, FaGithub, FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
@@ -78,6 +78,11 @@ const Login = () => {
                     <Divider text={'or login with'}></Divider>
 
                     <SocialLogin></SocialLogin>
+                    <Link to='/' className="border text-sm flex items-center justify-center mx-10 p-2  mb-1 bg-gray-500 btn btn-sm text-white hover:bg-gray-700 rounded-full">
+                   
+                        <FaArrowLeft ></FaArrowLeft><span className=" font-bold">back</span>
+                   </Link>
+                   
                 </div>
             </div>
         </div>

@@ -53,17 +53,19 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    let userEmail;
-    if (user) {
-        userEmail = user.email
-    }
+    // let userEmail;
+    // if (user) {
+    //     userEmail = user.email
+    // }
     //    console.log(userEmail);
 
 
     useEffect(() => {
         const subscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            console.log(currentUser);
             if (currentUser) {
+                console.log('hello guys');
                 const email = { email: currentUser.email };
                 // console.log(email);
                 axiosPublic.post('/api/v1/jwt', email)

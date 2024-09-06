@@ -37,7 +37,7 @@ const Testimonials = () => {
                                 />
                                 <FaQuoteLeft className="md:text-7xl text-2xl"></FaQuoteLeft>
                                 <p className="text-sm px-10 text-center">{review.details}</p>
-                                <h1 className="text-4xl text-yellow-500 font-bold">{review.name}</h1>
+                                <h1 className="text-2xl md:text-4xl text-yellow-500 font-bold">{review.name}</h1>
                             </div>
 
                         </SwiperSlide>):null
