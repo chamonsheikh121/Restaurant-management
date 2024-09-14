@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const upDataUser = (result, userName, photoLink) => {
+    const upDateUser = (result, userName, photoLink) => {
         setLoading(true)
         return updateProfile(result, {
             displayName: userName,
@@ -96,7 +96,7 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         setLoading,
-        upDataUser,
+        upDateUser,
         logOut,
         googleLogin
     }

@@ -156,7 +156,7 @@ const CheckoutForm = () => {
                     }}
                 ></CardElement>
                 <div className="max-w-2xl flex justify-center flex-col my-5 gap-5 items-center mx-auto">
-                    <button className="border text-white text-xl hover:text-black w-1/2  p-2 btn bg-[#cda630]" type="submit" disabled={!stripe || !clientSecret}> {loading ? <span className="loading loading-spinner text-white"></span> : "Pay"} </button>
+                    <button className="border text-white text-xl hover:text-black w-1/2  p-2 btn bg-[#cda630]" type="submit" > {loading ? <span className="loading loading-spinner text-white"></span> : "Pay"} </button>
                     {
                         error && <p className="text-red-600 bg-gray-300 py-2 px-10 font-bold text-center">{error}</p>
                     }

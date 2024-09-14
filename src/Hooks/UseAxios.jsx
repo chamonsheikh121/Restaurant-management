@@ -5,7 +5,7 @@ import UseAuthContext from "./UseAuthContext";
 
 
 const axiosHook = axios.create({
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'https://bistro-boss-server-two.vercel.app/'
 
 })
 //https://bistro-boss-server-two.vercel.app/

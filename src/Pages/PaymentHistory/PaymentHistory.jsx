@@ -6,9 +6,9 @@ import PaymentCard from "./PaymentCard";
 
 const PaymentHistory = () => {
 
-    const [payments] = UsePayments();
+    const [payments,, isLoading] = UsePayments();
 
-    console.log(payments);
+    console.log(isLoading);
 
     return (
         <div>
@@ -33,7 +33,7 @@ const PaymentHistory = () => {
                             </tr>
                         </thead>
                         {
-                            !payments[0] && <span className="w-full h-full  flex justify-center items-center"><ThreeCircles
+                            isLoading ? <span className="w-full h-full  flex justify-center items-center"><ThreeCircles
                                 visible={true}
                                 height="100"
                                 width="100"
@@ -41,7 +41,7 @@ const PaymentHistory = () => {
                                 ariaLabel="three-circles-loading"
                                 wrapperStyle={{}}
                                 wrapperClass=""
-                            /></span>
+                            /></span>: <span className="text-xl font-bold">not payment yet</span>
                         }
                         <tbody>
 

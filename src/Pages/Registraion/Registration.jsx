@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { FaCheck } from "react-icons/fa";
@@ -14,17 +14,18 @@ import SocialLogin from "../Shared/SocialLogin";
 
 const Registration = () => {
     const axiosPublic = UseAxiosPublic()
-    const { signUp, upDataUser, logOut } = UseAuthContext()
+    const { signUp, upDateUser, logOut } = UseAuthContext()
     const [passwordValidate, setPasswordValidate] = useState(null)
     const [matchRegEx, setMatchRegex] = useState(false);
     const navigate = useNavigate()
     const [visible, setVisible] = useState(false)
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    const emailValue = useRef()
+    const nameValue = useRef()
+
     const [captcha, setCaptcha] = useState('')
     const [userName, setUserName] = useState('')
-    const [photoLink, setPhotoLInk] = useState('')
     const [disableRegistration, setDisableRegistration] = useState(true)
+    const passwordValue = useRef()
 
     const doSubmit = () => {
 
@@ -42,31 +43,25 @@ const Registration = () => {
 
     };
 
-    const handlePassValidate = (passwordValue) => {
-        // console.log(passwordValue);
-        setPassword(passwordValue)
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(passwordValue)
-        setMatchRegex(regex)
-        if (!regex) {
-            setPasswordValidate('your password should have one small letter, capital letter, number, special character')
-        }
-    }
+
 
 
     const handleRegistrationForm = (event) => {
         event.preventDefault()
         // console.log(userName, email, password, photoLink);
-
-        signUp(email, password)
+        console.log(emailValue.current.value, passwordValue.current.value);
+        signUp(emailValue.current.value, passwordValue.current.value)
             .then(result => {
-                console.log(upDataUser);
-                upDataUser(result.user, userName, photoLink).then(() => {
+                console.log(upDateUser);
+                upDateUser(result.user, nameValue.current.value).then(() => {
                     // user
+                    console.log('hi ima user');
                     const user = {
-                        name: userName,
-                        email: email,
-                        photoLink: photoLink
+                        name: nameValue.current.value,
+                        email: result.user?.email,
+                        photoLink: result?.user?.photoURL || ''
                     }
+                    console.log(user);
                     axiosPublic.post('/api/v1/users', user)
                         .then(res => {
                             console.log(res.data.insertedId);
@@ -87,7 +82,9 @@ const Registration = () => {
 
                 }).catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                Swal.fire(`${err.message}`)
+            })
 
 
 
@@ -96,7 +93,10 @@ const Registration = () => {
 
 
     useEffect(() => {
+        emailValue.current.value = ''
+        passwordValue.current.value = ''
         loadCaptchaEnginge(6);
+        
     }, [])
 
     return (
@@ -116,21 +116,16 @@ const Registration = () => {
                         <div className="form-control">
 
                             <input type="text" placeholder="Your name" className="input input-bordered"
-                                onBlur={(e) => setUserName(e.target.value)}
+                                ref={nameValue}
                                 required
                             />
                         </div>
-                        <div className="form-control">
-
-                            <input type="text" placeholder="Photo url" className="input input-bordered"
-                                onBlur={(e) => setPhotoLInk(e.target.value)}
-
-                            />
-                        </div>
+                        
+                       
                         <div className="form-control">
 
                             <input type="email" placeholder="email" className="input input-bordered"
-                                onBlur={(e) => setEmail(e.target.value)}
+                                ref={emailValue}
                                 required
                             />
                         </div>
@@ -138,7 +133,8 @@ const Registration = () => {
 
                             <div className="relative">
                                 <input type={`${visible ? 'text' : 'password'}`} placeholder="password" className="w-full input input-bordered"
-                                    onBlur={(e) => handlePassValidate(e.target.value)}
+                                    ref={passwordValue}
+
                                 />
                                 <span onClick={() => setVisible(!visible)} className="text-2xl absolute right-5 top-3">{visible ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash>}</span>
                                 {passwordValidate && <p className={matchRegEx ? 'text-green-700' : 'text-red-700'}>{passwordValidate}</p>}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuthContext from "../../Hooks/UseAuthContext";
 import { FaArrowLeft, FaGithub, FaRegEye } from "react-icons/fa";
@@ -17,11 +17,12 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const { singIn } = UseAuthContext()
     const location = useLocation()
-
+    const emailValue = useRef()
+    const passwordValue = useRef()
     const handleLoginForm = (event) => {
         event.preventDefault()
 
-        singIn(email, password)
+        singIn( emailValue.current.value, passwordValue.current.value)
             .then(result => {
                 Swal.fire({
                     title: "Success",
@@ -30,7 +31,7 @@ const Login = () => {
                 });
                 navigate(location.state ? location.state : '/')
             })
-            .catch(err => console.log(err))
+            .catch(err => Swal.fire(`${err.message}`))
 
 
 
@@ -53,7 +54,7 @@ const Login = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" placeholder="email" className="input input-bordered" required
-                                onBlur={(e) => setEmail(e.target.value)}
+                                ref={emailValue}
                             />
                         </div>
                         <div className="form-control">
@@ -62,7 +63,7 @@ const Login = () => {
                             </label>
                             <div className="relative">
                                 <input type={visible ? 'text' : 'password'} placeholder="password" className="w-full input input-bordered" required
-                                    onBlur={(e) => setPassword(e.target.value)}
+                                   ref={passwordValue}
                                 />
                                 <span onClick={() => setVisible(!visible)} className="text-2xl absolute right-5 top-3">{visible ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash>}</span>
                             </div>
@@ -79,10 +80,10 @@ const Login = () => {
 
                     <SocialLogin></SocialLogin>
                     <Link to='/' className="border text-sm flex items-center justify-center mx-10 p-2  mb-1 bg-gray-500 btn btn-sm text-white hover:bg-gray-700 rounded-full">
-                   
+
                         <FaArrowLeft ></FaArrowLeft><span className=" font-bold">back</span>
-                   </Link>
-                   
+                    </Link>
+
                 </div>
             </div>
         </div>

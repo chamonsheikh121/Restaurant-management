@@ -20,10 +20,10 @@ const Navbar = () => {
     console.log(isAdmin);
     const [cart] = UseCart()
     // console.log(user);
-    const userName = user?.displayName?.split(' ')
+    const userName = user?.displayName?.split('')
     let userFirstLetter
     if (userName) {
-        userFirstLetter = userName[1]?.split('')[0]
+        userFirstLetter = userName[0]
     }
 
 

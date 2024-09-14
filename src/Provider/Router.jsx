@@ -1,12 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Main from "../Pages/Layout/Main";
 import Home from "../Pages/Home/Home";
 import OurMenu from "../Pages/OurMenu/OurMenu";
 import OurShop from "../Pages/Our shop/OurShop";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registraion/Registration";
-import Profile from "../Pages/Profile/Profile";
 import PrivateRouter from "./PrivateRouter/PrivateRouter";
 import Cart from "../Pages/Cart/Cart";
 import UserDashboard from "../Pages/Layout/UserDashboard";
@@ -23,12 +21,16 @@ import Checkout from "../Pages/Checkout.jsx/Checkout";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/AddReview/AddReview";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import MyBooking from "../Pages/Mybooking/MyBooking";
+
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -45,11 +47,8 @@ const router = createBrowserRouter([
             {
                 path: 'ourShop/:category',
                 element: <OurShop></OurShop>
-            },
-            {
-                path: 'profile',
-                element: <PrivateRouter><Profile></Profile></PrivateRouter>
             }
+            
         ]
     },
     {
@@ -71,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: 'reservation',
                 element: <Reservation></Reservation>
+            },
+            {
+                path: 'my-bookings',
+                element:<MyBooking></MyBooking>
             },
             {
                 path: 'add-review',
@@ -107,7 +110,7 @@ const router = createBrowserRouter([
             {
                 path: 'manage-items/:id',
                 element: <AdminRouter><UpdateItem></UpdateItem></AdminRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/menuItem/${params.id}`)
+                loader: ({ params }) => fetch(`https://bistro-boss-server-two.vercel.app/api/v1/menuItem/${params.id}`)
 
             },
             {
