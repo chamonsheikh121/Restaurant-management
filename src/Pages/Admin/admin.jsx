@@ -19,5 +19,3 @@ const admin = () => {
         </div>
     );
 };
-
-export default admin;
