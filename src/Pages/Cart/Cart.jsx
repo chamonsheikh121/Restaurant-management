@@ -133,22 +133,7 @@ const Cart = () => {
                                 <th>item name</th>
                                 <th>price</th>
                                 <th>action</th>
-                            </tr>
-                        </thead>
-                        {
-                            cart.length < 1 && <tbody className="ml-10 md:text-xl font-bold ">No item found</tbody>
-                        }
-                        {
-                            cart[0] &&
-                            <tbody>
-
-                                {
-                                    cart?.map((c, i) => <CartCard key={c._id} item={c} index={i}></CartCard>)
-                                }
-
-
-                            </tbody>
-                        }
+                   
 
 
                     </table>
